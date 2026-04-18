@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¡Feliz Cumpleaños, Mamá! 🌷</title>
+
+<!-- Open Graph / Preview al compartir -->
+<meta property="og:title" content="¡Feliz Cumpleaños, Mamá! 🌷">
+<meta property="og:description" content="Un regalo muy especial para el día de tu cumpleaños. Con todo mi amor. 💛">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=800&q=80">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="420">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="¡Feliz Cumpleaños, Mamá! 🌷">
+<meta name="twitter:description" content="Un regalo muy especial para el día de tu cumpleaños. Con todo mi amor. 💛">
+
+<!-- Favicon inline SVG -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌷</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  min-height: 100vh;
+  background: #f5e6c8;
+  font-family: 'Playfair Display', Georgia, serif;
+  overflow-x: hidden;
+}
+
+.confetti-wrap {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.cp {
+  position: absolute;
+  font-size: 10px;
+  opacity: 0.85;
+  animation: fall linear infinite;
+}
+@keyframes fall {
+  0%   { transform: translateY(-30px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1.2rem 4rem;
+  gap: 1.4rem;
+}
+
+.garland {
+  font-size: 1.8rem;
+  letter-spacing: 0.4rem;
+  opacity: 0.8;
+}
+
+.title-box {
+  background: #8B1A1A;
+  border: 4px solid #d4a017;
+  border-radius: 10px;
+  padding: 1.5rem 3rem;
+  text-align: center;
+  width: 100%;
+  max-width: 580px;
+  box-shadow: 5px 5px 0 #5a0f0f;
+  position: relative;
+}
+.title-box::before { content: '❧'; color: #d4a017; position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-size: 1.4rem; }
+.title-box::after  { content: '❧'; color: #d4a017; position: absolute; right: 14px; top: 50%; transform: translateY(-50%) scaleX(-1); font-size: 1.4rem; }
+
+.t-main { font-family: 'Dancing Script', cursive; font-size: 3rem; color: #f5e6c8; text-shadow: 2px 2px 4px rgba(0,0,0,0.35); line-height: 1.1; }
+.t-sub  { font-family: 'Dancing Script', cursive; font-size: 1.7rem; color: #d4a017; margin-top: 0.2rem; }
+
+.cake { font-size: 5rem; animation: bounce 1.6s ease-in-out infinite; display: block; text-align: center; }
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+.music-panel {
+  background: #fff8e7;
+  border: 2px solid #d4a017;
+  border-radius: 8px;
+  padding: 0.9rem 1.4rem;
+  text-align: center;
+  width: 100%;
+  max-width: 480px;
+}
+.music-label { font-size: 0.82rem; color: #8B1A1A; font-style: italic; margin-bottom: 0.5rem; }
+.music-row { display: flex; align-items: center; justify-content: center; gap: 1rem; }
+.play-btn {
+  background: #8B1A1A; color: #f5e6c8; border: none; border-radius: 50%;
+  width: 46px; height: 46px; font-size: 1.2rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.1s;
+}
+.play-btn:hover { transform: scale(1.08); background: #6b1010; }
+.music-name { font-size: 0.88rem; color: #5a3a00; font-style: italic; }
+.bars { display: flex; align-items: flex-end; gap: 3px; height: 22px; }
+.bar { width: 4px; background: #8B1A1A; border-radius: 2px; height: 6px; }
+.bar.p { animation: bUp 0.55s ease-in-out infinite alternate; }
+.bar:nth-child(2).p { animation-delay: 0.1s; }
+.bar:nth-child(3).p { animation-delay: 0.22s; }
+.bar:nth-child(4).p { animation-delay: 0.08s; }
+.bar:nth-child(5).p { animation-delay: 0.18s; }
+@keyframes bUp { from{height:4px} to{height:20px} }
+
+.msg-card {
+  background: #fff8e7;
+  border: 2px solid #c8922a;
+  border-radius: 10px;
+  padding: 1.5rem 1.8rem;
+  width: 100%;
+  max-width: 560px;
+  text-align: center;
+  font-size: 1.05rem;
+  color: #3a1f00;
+  line-height: 1.9;
+}
+.orn { color: #c8922a; font-size: 1.2rem; display: block; margin: 0.3rem 0; }
+
+.gift-btn {
+  background: #8B1A1A;
+  color: #f5e6c8;
+  border: 3px solid #d4a017;
+  border-radius: 8px;
+  padding: 1rem 2.5rem;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.6rem;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 #5a0f0f;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.gift-btn:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 #5a0f0f; }
+.gift-btn:active { transform: translate(1px,1px); box-shadow: 2px 2px 0 #5a0f0f; }
+
+.flowers { font-size: 1.4rem; letter-spacing: 0.3rem; opacity: 0.7; }
+
+/* OVERLAY CARTA */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(50,15,0,0.78);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.overlay.show { display: flex; }
+
+.letter {
+  background: #fff8e7;
+  border: 3px solid #d4a017;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 540px;
+  padding: 2.2rem 2rem 1.8rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: popIn 0.45s ease-out;
+  position: relative;
+}
+@keyframes popIn { from{transform:scale(0.5) rotate(-6deg);opacity:0} to{transform:scale(1) rotate(0);opacity:1} }
+
+.stamp {
+  position: absolute; top: 14px; right: 14px;
+  background: #8B1A1A; color: #f5e6c8;
+  width: 58px; height: 58px; border-radius: 5px;
+  border: 2px solid #d4a017;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  font-size: 1.5rem;
+}
+.stamp small { font-size: 0.42rem; letter-spacing: 0.06rem; font-family: 'Playfair Display', serif; margin-top: -2px; }
+
+.l-title { font-family: 'Dancing Script', cursive; font-size: 2rem; color: #8B1A1A; text-align: center; margin-bottom: 0.6rem; }
+.l-hr { border: none; border-top: 1px solid #c8922a; margin: 0 auto 1.2rem; width: 80%; }
+.l-body { font-size: 0.98rem; color: #3a1f00; line-height: 1.95; }
+.l-body p { margin-bottom: 0.9rem; }
+
+.voucher {
+  background: #8B1A1A;
+  color: #f5e6c8;
+  border: 2px solid #d4a017;
+  border-radius: 8px;
+  padding: 1.1rem 1.4rem;
+  text-align: center;
+  margin: 1.2rem 0;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+.voucher em { font-family: 'Playfair Display', serif; font-size: 0.9rem; display: block; margin-top: 0.3rem; }
+
+.l-footer { text-align: right; margin-top: 1rem; font-family: 'Dancing Script', cursive; font-size: 1.15rem; color: #8B1A1A; }
+
+.close-btn {
+  display: block; margin: 1.4rem auto 0;
+  background: transparent; border: 2px solid #8B1A1A;
+  color: #8B1A1A; border-radius: 6px;
+  padding: 0.5rem 1.6rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.88rem; cursor: pointer;
+}
+.close-btn:hover { background: #f0d8b0; }
+
+@media (max-width: 480px) {
+  .t-main { font-size: 2.2rem; }
+  .t-sub { font-size: 1.3rem; }
+  .title-box { padding: 1.2rem 2rem; }
+  .title-box::before, .title-box::after { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="confetti-wrap" id="cw"></div>
+
+<div class="page">
+
+  <div class="garland">🌸🌷🌼✨🌼🌷🌸</div>
+
+  <div class="title-box">
+    <div class="t-main">¡Feliz Cumpleaños!</div>
+    <div class="t-sub">Mamá, hoy es tu día 💛</div>
+  </div>
+
+  <span class="cake">🎂</span>
+
+  <div class="music-panel">
+    <div class="music-label">♩ Música para celebrarte ♩</div>
+    <div class="music-row">
+      <button class="play-btn" id="playBtn" onclick="toggleMusic()">⏸</button>
+      <div class="music-name">Cumpleaños Feliz — versión especial</div>
+      <div class="bars" id="bars">
+        <div class="bar p"></div>
+        <div class="bar p"></div>
+        <div class="bar p"></div>
+        <div class="bar p"></div>
+        <div class="bar p"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="msg-card">
+    <span class="orn">— ✦ —</span>
+    Hay personas que llegan a tu vida por casualidad,<br>
+    y hay personas que <em>te eligen</em>.<br><br>
+    Vos me elegiste a mí, y eso es lo más hermoso<br>
+    que alguien pudo haberme dado.<br><br>
+    Gracias por tu amor, por tu paciencia,<br>
+    por enseñarme tanto sin pedir nada a cambio.<br>
+    Sos, sin duda, una de las personas más importantes<br>
+    en mi vida. Hoy y siempre.
+    <span class="orn">— ✦ —</span>
+  </div>
+
+  <div class="flowers">🌺 🌻 🌺 🌻 🌺</div>
+
+  <button class="gift-btn" onclick="openGift()">🎁 Abrir tu regalo sorpresa</button>
+
+</div>
+
+<!-- Overlay carta -->
+<div class="overlay" id="overlay">
+  <div class="letter">
+
+    <div class="stamp">💌<small>CON AMOR</small></div>
+
+    <div class="l-title">Tu regalo especial</div>
+    <hr class="l-hr">
+
+    <div class="l-body">
+      <p>Querida mamá:</p>
+      <p>
+        Elegiste quererme cuando no tenías ninguna obligación de hacerlo.
+        Me abriste las puertas de tu corazón, me diste tu tiempo, tu amor
+        y tu presencia, y con eso me diste algo que no tiene precio:
+        <strong>una mamá</strong>.
+      </p>
+      <p>
+        Hoy, en el día más tuyo del año, quiero devolverte aunque sea
+        una pequeña parte de todo lo que me das. Por eso te tengo preparado
+        esto:
+      </p>
+
+      <div class="voucher">
+        🍽️ ¡Ganaste una salida a comer!<br>
+        <em>
+          Vos elegís el restaurante, el día y la hora.<br>
+          Yo me encargo del resto. 🥂✨
+        </em>
+      </div>
+
+      <p>
+        Este vale no vence nunca, no tiene letra chica
+        y viene acompañado de la mejor compañía del mundo: la mía.
+        Solo decime a dónde querés ir y lo organizamos juntos.
+      </p>
+      <p>
+        Gracias por elegirme. Gracias por ser mi mamá.
+        No importa cómo se llame lo que sos para mí —
+        para mí, sos mi mamá, y eso lo llevo en el alma.
+      </p>
+    </div>
+
+    <div class="l-footer">
+      Con todo mi amor,<br>
+      tu hij@ 🌷
+    </div>
+
+    <button class="close-btn" onclick="closeGift()">Cerrar carta</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  // Confeti
+  var colors = ['#d4a017','#8B1A1A','#e8c97e','#c8922a','#f5e6c8','#b85c38'];
+  var shapes = ['■','●','▲','◆'];
+  var cw = document.getElementById('cw');
+  for (var i = 0; i < 55; i++) {
+    var el = document.createElement('div');
+    el.className = 'cp';
+    el.style.left = (Math.random() * 100) + 'vw';
+    el.style.color = colors[Math.floor(Math.random() * colors.length)];
+    el.style.fontSize = (8 + Math.random() * 10) + 'px';
+    el.style.animationDuration = (2.5 + Math.random() * 3.5) + 's';
+    el.style.animationDelay = (Math.random() * 4) + 's';
+    el.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+    cw.appendChild(el);
+  }
+
+  // Audio
+  var ctx = null;
+  var playing = false;
+
+  function playNotes() {
+    if (!playing) return;
+    ctx = new (window.AudioContext || window.webkitAudioContext)();
+    var gain = ctx.createGain();
+    gain.gain.value = 0.15;
+    gain.connect(ctx.destination);
+
+    var notes = [261.63,261.63,293.66,261.63,349.23,329.63,
+                 261.63,261.63,293.66,261.63,392.00,349.23,
+                 261.63,261.63,523.25,440.00,349.23,329.63,293.66,
+                 466.16,466.16,440.00,349.23,392.00,349.23];
+    var durs =  [0.25,0.25,0.5,0.5,0.5,1.1,
+                 0.25,0.25,0.5,0.5,0.5,1.1,
+                 0.25,0.25,0.5,0.5,0.5,0.5,0.85,
+                 0.25,0.25,0.5,0.5,0.5,1.4];
+
+    var t = ctx.currentTime + 0.05;
+    notes.forEach(function(freq, i) {
+      var osc = ctx.createOscillator();
+      var g2  = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.value = freq;
+      g2.gain.setValueAtTime(0.001, t);
+      g2.gain.linearRampToValueAtTime(0.15, t + 0.03);
+      g2.gain.linearRampToValueAtTime(0.001, t + durs[i] - 0.03);
+      osc.connect(g2); g2.connect(gain);
+      osc.start(t); osc.stop(t + durs[i]);
+      t += durs[i];
+    });
+
+    var total = durs.reduce(function(a,b){return a+b;}, 0);
+    setTimeout(playNotes, (total - 0.4) * 1000);
+  }
+
+  function startMusic() {
+    playing = true;
+    playNotes();
+  }
+
+  window.toggleMusic = function() {
+    var btn = document.getElementById('playBtn');
+    var bars = document.querySelectorAll('.bar');
+    if (playing) {
+      playing = false;
+      if (ctx) { ctx.close(); ctx = null; }
+      btn.textContent = '▶';
+      bars.forEach(function(b){ b.classList.remove('p'); });
+    } else {
+      btn.textContent = '⏸';
+      bars.forEach(function(b){ b.classList.add('p'); });
+      startMusic();
+    }
+  };
+
+  window.openGift = function() {
+    document.getElementById('overlay').classList.add('show');
+    moreConfetti();
+  };
+
+  window.closeGift = function() {
+    document.getElementById('overlay').classList.remove('show');
+  };
+
+  document.getElementById('overlay').addEventListener('click', function(e) {
+    if (e.target === this) closeGift();
+  });
+
+  function moreConfetti() {
+    for (var i = 0; i < 30; i++) {
+      var el = document.createElement('div');
+      el.className = 'cp';
+      el.style.left = (Math.random() * 100) + 'vw';
+      el.style.color = colors[Math.floor(Math.random() * colors.length)];
+      el.style.fontSize = (8 + Math.random() * 12) + 'px';
+      el.style.animationDuration = (1.5 + Math.random() * 2) + 's';
+      el.style.animationDelay = '0s';
+      el.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+      cw.appendChild(el);
+      setTimeout(function(e){ e.remove(); }, 4000, el);
+    }
+  }
+
+  // Autoplay al cargar
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(startMusic, 600);
+  });
+})();
+</script>
+</body>
+</html>
